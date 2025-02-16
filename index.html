@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6QJYLFz0g4XyW3qUq7d9n6v5h5F0rXW5eI5z5El6Rj0y6JmE5f4h5FkL4m" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+  <div class="stars"></div>
+    <div class="header">For ungaa</div>
+    <div class="grid-container">
+      <div class="card" onclick="openPlayer(this)" data-title="The Only Exception" data-artist="bunga cantikk" data-image="/image/1.jpg" data-song="song/The Only Exception .mp3">
+        <div class="image-container">
+          <img src="/image/1.jpg" alt="Lagu yang Disukai" class="song-image">
+        </div>
+        <div class="content">
+            <div class="title">lagu yang spesial</div>
+        </div>
+      </div>      
+        <div class="card" onclick="openPlayer(this)" data-title="Favorite" data-artist="bunga lucuu" data-image="/image/9.jpg" data-song="song/Favorite.mp3">
+          <div class="image-container">
+            <img src="/image/9.jpg" alt="Lagu yang Disukai" class="song-image">
+          </div>
+          <div class="content">
+              <div class="title">buat ungaa</div>
+          </div>
+        </div>
+        <div class="card" onclick="openPlayer(this)" data-title="Heaven" data-artist="bunga imutt" data-image="/image/10.jpg" data-song="/song/Heaven.mp3">
+          <div class="image-container">
+            <img src="/image/10.jpg" alt="Lagu yang Disukai" class="song-image">
+          </div>
+          <div class="content">
+              <div class="title">ini juga spesial</div>
+          </div>
+        </div>
+        <div class="card" onclick="openPlayer(this)" data-title="Karena Kamu Cantik" data-artist="bunga spesial" data-image="/image/4.jpg" data-song="/song/Karena Kamu Cantik Kamu Baik .mp3">
+          <div class="image-container">
+            <img src="/image/4.jpg" alt="Lagu yang Disukai" class="song-image">
+          </div>
+          <div class="content">
+              <div class="title">buat yang cantik</div>
+          </div>
+        </div>
+        <div class="card" onclick="openPlayer(this)" data-title="Sempurna" data-artist="ungaa ga ada lawan" data-image="/image/6.jpg" data-song="/song/Sempurna.mp3">
+          <div class="image-container">
+              <img src="/image/6.jpg" alt="Lagu yang Disukai" class="song-image">
+          </div>
+          <div class="content">
+              <div class="title">cocok buat kamu</div>
+          </div>
+      </div>     
+      <div class="card" onclick="openPlayer(this)" data-title="Penjaga Hati" data-artist="ungaa nihh boss" data-image="/image/8.jpg" data-song="/song/penjaga hati.mp3">
+          <div class="image-container">
+              <img src="/image/8.jpg" alt="Lagu yang Disukai" class="song-image">
+          </div>
+          <div class="content">
+              <div class="title">rawrr</div>
+          </div>
+      </div>
+        <div class="wrapped-box" onclick="openStory()">
+            <p>Happy Birthday ungaa🎉🥳🎉</p>
+        </div>
+    </div>
+    <div class="story-wrapper" id="storyWrapper" style="display: none">
+        <div class="story-container">
+          <div class="story">
+            <img src="/image/story1.jpg" alt="Story 1" >
+          </div>
+          <div class="story">
+            <img src="/image/story2.jpg" alt="Story 2">
+          </div>
+          <div class="story">
+            <img src="/image/story3.jpg" alt="Story 3">
+          </div>
+          <div class="story">
+            <h1>maap kalo terlalu sederhana</h1>
+          </div>
+          <div class="story">
+            <img src="/image/story4.jpg" alt="Story 3">
+          </div>
+          <div class="story">
+            <img src="/image/story5.jpg" alt="Story 3">
+          </div>
+          <div class="story">
+            <img src="/image/story6.jpg" alt="Story 3">
+          </div>
+          <div class="story">
+            <i>tuhh yg bikin gajadi sederhana gara-gara cewe aku spesial</i>
+          </div>
+        </div>
+        <div class="story-indicator">
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+            <span class="indicator"><span></span></span>
+        </div>
+    </div>
+      <div id="playerBox" class="music-player">
+          <nav>
+              <div class="circle" onclick="closePlayer()">
+                  <i class="bi bi-chevron-left"></i>
+              </div>
+              <div class="circle">
+                  <i class="bi bi-justify"></i>
+              </div>
+          </nav>
+          <img id="playerImage" src="" class="song-img">
+          <h1 id="playerTitle"></h1>
+          <p id="playerArtist"></p>
+      
+          <audio id="playerAudio">
+              <source id="playerSource" src="" type="audio/mpeg">
+          </audio>
+      
+          <input type="range" value="0" id="progress">
+      
+          <div class="controls">
+              <div><i class="bi bi-skip-start-fill"></i></div>
+              <div onclick="playPause()"><i class="bi bi-play-fill" id="ctrlIcon"></i></div>
+              <div><i class="bi bi-skip-end-fill"></i></div>
+          </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybGQyQd8LcKugje4z8NE37nMLb0g91V0XfXb6k5CmA8D3tsD8K" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0b7zv7jYz1GqfZ9zS6m6z2d6Zr5IYk5cZXZPmrJjbY4cs2wD" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+  </body>
+  
+</html>

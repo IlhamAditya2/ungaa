@@ -1,0 +1,826 @@
+body {
+    background-color: #fedfdb; /* Soft pink untuk latar */
+    color: #333333; /* Warna teks utama */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+ /* Container Bintang */
+.stars {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Bintang */
+.star {
+  position: absolute;
+  background: white;
+  width: 5px; /* Ukuran lebih besar */
+  height: 5px;
+  border-radius: 50%;
+  opacity: 1; /* Lebih terang */
+  animation: fall linear infinite;
+}
+
+/* Animasi Bintang Jatuh */
+@keyframes fall {
+  from {
+      transform: translateY(-10px); /* Mulai dari atas layar */
+      opacity: 1;
+  }
+  to {
+      transform: translateY(100vh); /* Jatuh ke bawah */
+      opacity: 0;
+  }
+}
+
+
+/* Hilangkan scroll di body jika masih ada */
+body {
+  margin: 0;
+  overflow: hidden; /* Mencegah scroll */
+}
+  
+  .header {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    color: #fff;
+    background-color: #ffc0cb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #1DB954;
+  }
+  
+  .navbar button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar button.active {
+    background-color: white;
+    color: #1DB954;
+  }
+  
+  .navbar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 kolom */
+    grid-template-rows: repeat(150px, auto); /* 2 baris */
+    gap: 10px; /* Jarak antar kartu */
+    padding: 15px;
+  }
+  
+  .card {
+    display: flex; /* Gambar dan teks sejajar horizontal */
+    align-items: center; /* Sejajarkan konten secara vertikal */
+    background-color: #282828;
+    border-radius: 8px;
+    overflow: hidden; /* Supaya gambar tidak keluar dari card */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 40px; /* Tinggi kotak lebih kecil */
+    cursor: pointer;
+    
+  }
+
+  .image-container {
+    flex: 0 0 50px; /* Lebar tetap untuk gambar */
+    height: 95px; /* Tinggi tetap untuk gambar */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 45px;
+    height: 80px;
+    object-fit: cover; /* Gambar memenuhi area tanpa merusak proporsi */
+  }
+
+  .content {
+    flex: 1; /* Supaya teks mengambil sisa ruang */
+    padding-right: 0px;
+    display: flex;
+    align-items: center; /* Agar teks sejajar vertikal */
+  }
+
+  .card .content .title {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding-left: 3px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); */
+  }
+  
+  /* .card img {
+    width: 100%;
+    max-width: 150px; 
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  } */
+  
+  /* .card .title {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  } */
+  
+  /* Player Bar */
+  .player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #282828;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #1DB954;
+  }
+  
+  .player-bar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  
+  .player-bar .info {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .player-bar .controls {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .player-bar button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  /* warpped */
+
+  .story-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .story-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .story {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .story.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .story img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .story-indicator {
+    position: absolute;
+    top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .indicator {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 5px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+
+    width: 0;
+    transition: width 3s ease-in-out;
+  }
+
+  .indicator span {
+    display: block;
+    height: 100%;
+    background: white;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 8s linear; /* Animasi berjalan selama 3 detik */
+  }
+  
+  .indicator.active {
+    background: white;
+  }
+  
+  /* .indicator::after {
+    content: '';
+    position: absolute;
+    
+    width: 0%;
+    background: white;
+    animation: progress 3s linear forwards;
+  } */
+  
+  @keyframes progress {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  
+
+  .wrapped-box{
+     width: 100%;
+    max-width: 900px; /* Sesuaikan lebar */
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    /* box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2); */
+    transition: transform 0.2s;
+    grid-column: 3 / 4; /* Letakkan di kolom ke-3 */
+    grid-row: 1 / 4; /* Rentangkan ke dua baris (atau sesuaikan sesuai kebutuhan) */
+    position: relative;
+    /* background-image: url('/image/1.jpg'); Masukkan path gambar di sini */
+    background-size: cover; /* Agar gambar memenuhi area */
+    background-position: center; /* Posisikan gambar di tengah */
+    animation: slideShow 12s infinite;
+    /* animation-timing-function: linear; */
+    animation-timing-function: ease-in-out;
+    
+  }
+
+  .wrapped-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; /* Supaya overlay di atas gambar */
+    border-radius: 4px;
+}
+
+.wrapped-box p {
+    position: relative; /* Supaya teks berada di atas overlay */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* Supaya teks di atas overlay */
+    margin: 0;
+}
+
+  .story-slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden; /* Agar story yang slide tidak keluar */
+}
+
+.story-slide {
+    min-width: 100%;
+    text-align: center;
+    line-height: 150px;
+    background-color: rgba(255, 255, 255, 0.2); /* Efek transparan */
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+  .wrapped-box:hover {
+    transform: scale(0.9);
+  }
+
+  /* modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content{
+    background-color: #1DB954;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
+  }
+
+  .modal-content {
+    background: linear-gradient(135deg, #1DB954, #00d85d); /* Efek gradasi untuk highlight */
+}
+
+  .close{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  @keyframes slideShow {
+    0% { 
+        background-image: url('/image/1.jpg');
+        /* background-position: center; Default posisi tengah */
+        /* background-position: 20% 50%; Gambar lebih jauh ke kiri */
+        /* background-size: 150%; Membuat gambar sedikit lebih besar */
+    }
+    25% { 
+        background-image: url('/image/2.jpg');
+        background-position: center; /* Foto kedua di atas */
+        /* background-size: 150%; */
+    }
+    50% { 
+        background-image: url('/image/3.jpg');
+        background-position: center; /* Posisi tengah untuk foto ketiga */
+        /* background-size: 150%; */
+    }
+    75% { 
+        background-image: url('/image/4.jpg');
+        background-position: center; /* Posisi tengah untuk foto keempat */
+        /* background-size: 150%; */
+    }
+    100% { 
+        background-image: url('/image/1.jpg');
+        background-position: center; /* Default posisi tengah */
+        /* background-size: 150%; */
+    }
+
+    
+    
+}
+
+
+
+
+
+/* musikkk */
+
+
+    /* .music-player{
+        background: #ffe0e5;
+        width: 400px;
+        padding:  25px 35px;
+        text-align: center;
+        } */
+        
+        .music-player {
+            background: #ffe0e5;
+            width: 90%;
+            max-width: 350px;
+            padding: 25px;
+            text-align: center;
+            position: fixed;
+            bottom: 1px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%); /* Mulai di luar layar bawah */
+            border-radius: 10px;
+            display: block;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0; /* Tidak terlihat pada awalnya */
+            transition: transform 0.5s ease, opacity 0.5s ease; /* Animasi transisi */
+        }
+        
+        .music-player.show {
+            transform: translateX(-50%) translateY(0); /* Animasi muncul dari bawah */
+            opacity: 1; /* Menampilkan elemen */
+        }
+        
+        
+        
+    .player-box{
+        width: 90%;
+        max-width: 400px;
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    nav .circle{
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background: #fff;
+        color: #f53192;
+        box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+        cursor: pointer;
+    }
+
+    .song-img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 8px solid #fff;
+        box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
+    }
+
+    .music-player p{
+        font-size: 14px;
+        color: #333;
+        padding: 1px;
+        margin: 1px;
+    }
+    .music-player h1{
+        font-size: 20px;
+        padding: 1px;
+        font-weight: 400;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 4px;
+    }
+
+    
+    .player-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+
+    .player-info {
+        flex-grow: 1;
+    }
+    
+    audio {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #progress{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        background: #f53192;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    #progress::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        background: #f53192;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 8px solid #fff;
+        box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
+    }
+
+    .controls{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .controls div{
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        background: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #f53192;
+        box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
+        cursor: pointer;
+    }
+    
+    .close-player {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    
+
+  
+  /* Responsif */
+@media only screen and (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk mode mobile */
+        grid-template-rows: auto; /* Baris menyesuaikan */
+    }
+
+    .card img {
+        max-width: 100%; /* Ukuran lebih kecil untuk layar kecil */
+    }
+
+    .wrapped-box{
+        width: 100%;
+        max-width: 800px;
+        height: 200px;
+        /* background-color: #1DB954; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px ;
+        cursor: pointer;
+        /* box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2); */
+        transition: transform 0.2s;
+        grid-column: span 2;
+        /* background-size: -150%; Zoom gambar untuk menghindari terlalu kecil */
+        /* background-position: top; */
+      }
+
+    .wrapped-box p {
+        position: relative; /* Supaya teks berada di atas overlay */
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        z-index: 2; /* Supaya teks di atas overlay */
+        margin: 0;
+    }
+
+    .music-player {
+        width: 95%; /* Lebar lebih besar untuk layar kecil */
+        padding: 15px; /* Kurangi padding agar lebih proporsional */
+        bottom: 10px; /* Jarak bawah lebih kecil */
+        width: 100%; /* Memenuhi lebar layar */
+        height: auto; /* Tinggi otomatis mengikuti konten */
+        box-sizing: border-box;
+
+        
+    }
+
+    .controls{
+        margin-bottom: 50px;
+    }
+
+    .controls div{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    color: #f53192;
+    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+    cursor: pointer;
+    }
+
+    .player-bar img {
+        height: 40px;
+        width: 40px;
+    }
+
+    /* Atur font pada elemen dalam player bar */
+    .card .content .title {
+        font-size: 8px; /* Ukuran font lebih kecil */
+    }
+
+    .navbar button {
+        font-size: 12px; /* Ukuran font lebih kecil untuk tombol */
+        padding: 8px 12px; /* Sesuaikan padding */
+    }
+
+    .card {
+        font-size: 12px; /* Sesuaikan ukuran font dalam card */
+    }
+
+    @keyframes slideShow {
+        0% { 
+            background-image: url('/image/1.jpg');
+            /* background-position: center; Default posisi tengah */
+            /* background-position: 20% 50%; Gambar lebih jauh ke kiri */
+            background-size: 100%; /* Membuat gambar sedikit lebih besar */
+        }
+        25% { 
+            background-image: url('/image/9.jpg');
+            background-position: center; /* Foto kedua di atas */
+            background-size: 100%;
+        }
+        50% { 
+            background-image: url('/image/10.jpg');
+            background-position: center; /* Posisi tengah untuk foto ketiga */
+            background-size: 100%;
+        }
+        75% { 
+            background-image: url('/image/6.jpg');
+            background-position: center; /* Posisi tengah untuk foto keempat */
+            background-size: 100%;
+        }
+        100% { 
+            background-image: url('/image/1.jpg');
+            background-position: center; /* Default posisi tengah */
+            background-size: 100%;
+        }
+    }
+}
+
+@media (min-width: 801px) {
+    .wrapped-box {
+        grid-column: 3 / 4; /* Tetap di kolom ketiga */
+        grid-row: 1 / span 14; /* Membuat elemen memanjang ke bawah melewati 3 baris */
+        height: auto; /* Tinggi otomatis berdasarkan grid */
+    }
+  
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr); /* Tetap 3 kolom untuk elemen lain */
+      grid-auto-rows: 1fr; /* Semua baris memiliki tinggi yang sama */
+    }
+  }
+
+@media (max-width: 576px) { 
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk mode mobile */
+      grid-template-rows: auto; /* Baris menyesuaikan */
+  }
+
+  .card img {
+      max-width: 100%; /* Ukuran lebih kecil untuk layar kecil */
+  }
+
+  .wrapped-box{
+      width: 100%;
+      max-width: 800px;
+      height: 200px;
+      /* background-color: #1DB954; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px ;
+      cursor: pointer;
+      /* box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2); */
+      transition: transform 0.2s;
+      grid-column: span 2;
+      /* background-size: -150%; Zoom gambar untuk menghindari terlalu kecil */
+      /* background-position: top; */
+    }
+
+  .wrapped-box p {
+      position: relative; /* Supaya teks berada di atas overlay */
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      z-index: 2; /* Supaya teks di atas overlay */
+      margin: 0;
+  }
+
+  .music-player {
+      width: 95%; /* Lebar lebih besar untuk layar kecil */
+      padding: 15px; /* Kurangi padding agar lebih proporsional */
+      bottom: 10px; /* Jarak bawah lebih kecil */
+      width: 100%; /* Memenuhi lebar layar */
+      height: auto; /* Tinggi otomatis mengikuti konten */
+      box-sizing: border-box;
+
+      
+  }
+
+  .card {
+    display: flex; /* Gambar dan teks sejajar horizontal */
+    align-items: center; /* Sejajarkan konten secara vertikal */
+    background-color: #f3c0c8;
+    border-radius: 8px;
+    overflow: hidden; /* Supaya gambar tidak keluar dari card */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 40px; /* Tinggi kotak lebih kecil */
+    cursor: pointer;
+    
+  }
+
+  .controls{
+      margin-bottom: 50px;
+  }
+
+  .controls div{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  color: #f53192;
+  box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+  cursor: pointer;
+  }
+
+  .player-bar img {
+      height: 40px;
+      width: 40px;
+  }
+
+  /* Atur font pada elemen dalam player bar */
+  .card .content .title {
+      font-size: 8px; /* Ukuran font lebih kecil */
+  }
+
+  .navbar button {
+      font-size: 12px; /* Ukuran font lebih kecil untuk tombol */
+      padding: 8px 12px; /* Sesuaikan padding */
+  }
+
+  .card {
+      font-size: 12px; /* Sesuaikan ukuran font dalam card */
+  }
+}
+  
+  
+  
